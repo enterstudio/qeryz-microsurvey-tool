@@ -16,8 +16,7 @@ function qeryz_survey_admin_page() {
         //Deactivate function goes here......
     if (isset($_GET["action"]) && $_GET["action"]=="deactivate") {
         update_option('qeryz_username', "");
-        update_option('qeryz_code', "");
-        update_option('qeryz_qstn',"");
+        update_option('qeryz_code', "0");
     }    
     if (isset($_POST["action"]) && $_POST["action"]=="login") {
                 //Login function goes here......
@@ -32,15 +31,12 @@ function qeryz_survey_admin_page() {
         $substr = $array[0];
         $qryz_substr = $array[1];
         $user_id = trim(substr($substr, 8));
-        $qryz_id = trim(substr($qryz_substr, 9));
         update_option('qeryz_code',$user_id);
-        update_option('qeryz_qstn',$qryz_id);
             $len = strlen(trim($loginresult));
             if ($len == 0){
                     $error["login"] = "<p class='error_message'>Could not log in to Qeryz. Please check your login details.</p>";            
             }
             else {
-               echo ''; 
                 
             } 
             
@@ -50,7 +46,7 @@ function qeryz_survey_admin_page() {
         } 
         
     }
-    if(get_option('qeryz_code') != ''){
+    if(get_option('qeryz_code') > '0'){
         
 ?>
 <div id="" style="background:#ECE2CB;padding:25px;border:1px solid #eee;">
@@ -85,7 +81,7 @@ Current Account &rarr; <b><?php echo get_option('qeryz_username'); ?></b>
         </div>
       </form>
     </div>
-    <div id="ofc-screenshot">
+    <div id="ofc-screenshot"> <!--to be ommited soon-->
     </div>
   </div>
   <?php

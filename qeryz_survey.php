@@ -3,7 +3,7 @@
    Plugin Name: Qeryz Microsurvey Tool
    Plugin URI: http://qeryz.com
    Description: A plugin for Qeryz, a pop-up, as-you-go microsurvey that you can put in any and every webpage you have in your website.
-   Version: 1.0
+   Version: 1.1.0
    Author: Qeryz
    Author URI: http://qeryz.com
    License: GPL2
@@ -13,8 +13,8 @@
 define('QERYZ_SCRIPT_DOMAIN',         "qeryz.com");
 define('QERYZ_BASE_URL',              "http://qeryz.com/");
 define('QERYZ_SIGNUP_REDIRECT_URL',   QERYZ_BASE_URL."subscribe.php");
-define('QERYZ_LOGIN_URL',             QERYZ_BASE_URL."wplogin.php");
-define('QERYZ_SIGNUP_URL',            QERYZ_BASE_URL."#qeryz_signup_modal");
+define('QERYZ_LOGIN_URL',             QERYZ_BASE_URL."wplogin1.php");
+define('QERYZ_SIGNUP_URL',            QERYZ_BASE_URL."subscribe.php");
 define('QERYZ_DASHBOARD_LINK',        "http://qeryz.com/login/dashboard.php");
  
 require_once dirname( __FILE__ ) . '/qeryz_survey_admin.php';
@@ -32,8 +32,7 @@ function load_qeryz_style() {
 add_action('admin_enqueue_scripts', 'load_qeryz_style');
 
 function load_qeryz_js() { 
-    wp_enqueue_script('jquery');
-    wp_register_script('qeryz_cookie', plugins_url('/js/cookie.js', __FILE__),array('jquery'),null,true);
+    wp_register_script('qeryz_cookie', 'https://qeryz.com/survey/js/qryz_v3.js');
     wp_enqueue_script('qeryz_cookie');
 }
 add_action('wp_enqueue_scripts', 'load_qeryz_js');
@@ -47,28 +46,27 @@ add_action( 'admin_init', 'add_qeryz_caps');
 function qeryz_survey() {
     
     $code = get_option('qeryz_code');
-    
+    if ($code > 0){
 //<!--Start of Qeryz Survey Script-->
-    echo '  <!--Start of Qeryz Survey Script-->
-<script type="text/javascript" language="javascript">
-    jQuery(function($){ 
-    setTimeout(function(){
-    var zb = document.getElementsByTagName("script")[0];
-    var Qrz = document.createElement("div"); 
-    Qrz.id = "plks";
-    Qrz.className = "plks";
-    document.body.appendChild(Qrz);
-    var qryz_url = "http://qeryz.com/survey/qeryz_wordpress.php";
-    var qryz_c = readCookie("question");    
-    $.post(qryz_url, {qryz_uid:'.$code.',qryz_id:qryz_c,qryz_url:document.URL} ,function(data) {
-    $("#plks").html(data);
-    });
-    },0);
-    });      
-</script>';
+    echo ' 
+<!-- Start of code for Qeryz Survey  -->
+    <script type="text/javascript">
+    (function() {
+        setTimeout(function(){
+            var qryz_s = document.getElementsByTagName("script")[0];
+            var qryz_plks = document.createElement("div"); 
+            qryz_plks.id = "qryz_plks";
+            qryz_plks.className = "qryz_plks";
+            document.body.appendChild(qryz_plks);  
+            qryzInit("https://qeryz.com/survey/qeryz_wordpress_v3.php?qryz_uid='.$code.'&qryz_url="+document.URL);  
+        },0);
+    })();
+    </script>
+';
+    }
 
 }
-add_action('wp_footer', 'qeryz_survey',200);
+add_action('wp_footer', 'qeryz_survey',100);
 
 function qeryz_survey_menu() {
 //    add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position ); 
