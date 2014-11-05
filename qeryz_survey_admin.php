@@ -54,7 +54,7 @@ function qeryz_survey_admin_page() {
 Current Account &rarr; <b><?php echo get_option('qeryz_username'); ?></b> 
 <!--<div style="display:inline-block;background:#444;color:#fff;font-size:10px;text-transform:uppercase;padding:3px 8px;-moz-border-radius:5px;-webkit-border-radius:5px;"></div>-->
 <br><br>To start using Qeryz Survey, launch our dashboard for access to all features, including survey customization!
-<br><br><a href="<?php echo QERYZ_DASHBOARD_LINK ?>" style="text-decoration:none;" target="_blank" data-popup="true"><div class="qeryz_btn">Launch Dashboard</div></a>&nbsp;&nbsp;(This will open up a new browser tab)
+    <br><br><a href="<?php echo QERYZ_DASHBOARD_LINK ?>" style="text-decoration:none;" target="_blank" data-popup="true"><div class="qeryz_btn">Launch Qeryz</div></a>&nbsp;&nbsp;(This will open up a new browser tab.)
 </div>
 <?php  }else { ?>
 <!--QERYZ LOGIN FORM HERE-->      
@@ -72,7 +72,7 @@ Current Account &rarr; <b><?php echo get_option('qeryz_username'); ?></b>
             </tr>
             <tr valign="top">
             <th scope="row">Qeryz Password</th>
-            <td><input type="password" name="qeryz_password" value="<?php if (get_option('qeryz_password') != "") { echo "qeryz_password"; }; ?>" /></td>
+            <td><input type="password" name="qeryz_password" value="<?php if (get_option('qeryz_password') != "") { echo ""; }; ?>" /></td>
             </tr>
      </table>
         <p class="submit"><input type="submit" class="button-primary" value="Submit" name="submit" /></p>

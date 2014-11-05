@@ -1,21 +1,21 @@
 <?php
    /*
    Plugin Name: Qeryz Microsurvey Tool
-   Plugin URI: http://qeryz.com
+   Plugin URI: https://qeryz.com
    Description: A plugin for Qeryz, a pop-up, as-you-go microsurvey that you can put in any and every webpage you have in your website.
-   Version: 1.1.0
+   Version: 1.1.1
    Author: Qeryz
-   Author URI: http://qeryz.com
+   Author URI: https://qeryz.com
    License: GPL2
    */
 
 
 define('QERYZ_SCRIPT_DOMAIN',         "qeryz.com");
-define('QERYZ_BASE_URL',              "http://qeryz.com/");
+define('QERYZ_BASE_URL',              "https://qeryz.com/");
 define('QERYZ_SIGNUP_REDIRECT_URL',   QERYZ_BASE_URL."subscribe.php");
 define('QERYZ_LOGIN_URL',             QERYZ_BASE_URL."wplogin1.php");
 define('QERYZ_SIGNUP_URL',            QERYZ_BASE_URL."subscribe.php");
-define('QERYZ_DASHBOARD_LINK',        "http://qeryz.com/login/dashboard.php");
+define('QERYZ_DASHBOARD_LINK',        "https://qeryz.com/login/dashboard.php");
  
 require_once dirname( __FILE__ ) . '/qeryz_survey_admin.php';
    
@@ -32,8 +32,8 @@ function load_qeryz_style() {
 add_action('admin_enqueue_scripts', 'load_qeryz_style');
 
 function load_qeryz_js() { 
-    wp_register_script('qeryz_cookie', 'https://qeryz.com/survey/js/qryz_v3.js');
-    wp_enqueue_script('qeryz_cookie');
+    wp_register_script('qeryz_wordpress_js', 'https://qeryz.com/survey/js/qryz_wordpress_v3.js');
+    wp_enqueue_script('qeryz_wordpress_js');
 }
 add_action('wp_enqueue_scripts', 'load_qeryz_js');
 
