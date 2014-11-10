@@ -4,7 +4,7 @@ Donate link: https://qeryz.com/
 Tags: survey tool, qeryz, microsurvey
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,10 +42,14 @@ This plugin is developed so that you don't have to copy-paste the Qeryz code to 
 
 == Upgrade Notice ==
 
-= 1.1.1 =
+= 1.1.2 =
 * If survey is not showing after updating the plugin, please click on the plugin dashboard and deactivate your account. Then try to login in or try to deactivate the plugin and then activate.
 
 == Changelog ==
+
+= 1.1.2 =
+* Fix error for logging
+* Commented url replace on wp_remote_post
 
 = 1.1.1 =
 * Change wp_register_script qeryz_cookie to qeryz_js
