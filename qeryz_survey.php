@@ -3,7 +3,7 @@
    Plugin Name: Qeryz Microsurvey Tool
    Plugin URI: https://qeryz.com
    Description: A plugin for Qeryz, a pop-up, as-you-go microsurvey that you can put in any and every webpage you have in your website.
-   Version: 1.1.2
+   Version: 1.1.3
    Author: Qeryz
    Author URI: https://qeryz.com
    License: GPL2

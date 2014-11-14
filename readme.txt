@@ -4,7 +4,7 @@ Donate link: https://qeryz.com/
 Tags: survey tool, qeryz, microsurvey
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,10 +42,17 @@ This plugin is developed so that you don't have to copy-paste the Qeryz code to 
 
 == Upgrade Notice ==
 
-= 1.1.2 =
+= 1.1.3 =
 * If survey is not showing after updating the plugin, please click on the plugin dashboard and deactivate your account. Then try to login in or try to deactivate the plugin and then activate.
 
 == Changelog ==
+
+= 1.1.3 =
+* Rename user_details.txt file to qeryz_user_details.txt
+* Change the location of qeryz_user_details.txt file from wp-admin folder to plugin directory
+* Added $qeryz_user_details variable for qeryz_user_details.txt location 
+* Remove unnecessary div tags
+* Added icon-128x128.png and icon-256x256.png on assets folder
 
 = 1.1.2 =
 * Fix error for logging

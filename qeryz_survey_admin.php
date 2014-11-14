@@ -24,10 +24,11 @@ function qeryz_survey_admin_page() {
             $logindata = array("username" => $_POST["qeryz_username"], "password" => $_POST["qeryz_password"]);            
             $loginresult = qeryz_post_request(QERYZ_LOGIN_URL, $logindata);
             update_option('qeryz_username', $_POST["qeryz_username"]);
-        $fh = fopen('user_details.txt', 'w');
+        $qryz_user_details = plugin_dir_path( __FILE__ ).'qeryz_user_details.txt';
+        $fh = fopen($qryz_user_details, 'w');
         fwrite($fh, $loginresult);
         fclose($fh);
-                $array = explode("##", file_get_contents('user_details.txt'));
+        $array = explode("##", file_get_contents($qryz_user_details));
         $substr = $array[0];
         $qryz_substr = $array[1];
         $user_id = trim(substr($substr, 8));
@@ -80,8 +81,6 @@ Current Account &rarr; <b><?php echo get_option('qeryz_username'); ?></b>
                   &nbsp;Don't have a qeryz account? <a href="<?php echo QERYZ_SIGNUP_REDIRECT_URL; ?>" target="_blank" data-popup="true">Sign up now</a>.
         </div>
       </form>
-    </div>
-    <div id="ofc-screenshot"> <!--to be ommited soon-->
     </div>
   </div>
   <?php
