@@ -1,10 +1,10 @@
-=== Qeryz Microsurvey Tool ===
+=== Qeryz Wordpress Survey ===
 Contributors: h3sean
 Donate link: https://qeryz.com/
-Tags: survey tool, qeryz, microsurvey
+Tags: survey tool, qeryz, microsurvey, wordpress survey
 Requires at least: 3.0.1
-Tested up to: 4.0
-Stable tag: 1.1.3
+Tested up to: 4.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,13 +15,14 @@ Qeryz is a pop-up, as-you-go microsurvey that you can put in any and every webpa
 Get 700% more responses than a normal survey.
 Qeryz is a pop-up, as-you-go microsurvey tool that you can put in any and every webpage you have in your website. 
 Never ask your customers to click on a link to go to your survey. Gather customer insights without the hassle. 
-Create surveys in multiple choice, checkbox, scale or a simple text area. 
+Create surveys in multiple choice, checkbox, scale or a simple text area.
 
+ = IMPORTANT =
+Qeryz Microsurvey has renamed to Qeryz Wordpress Survey. If you have trouble updating your plugin, just delete the old version and install the newer version of the plugin.
 
 == Installation ==
 
 This section describes how to install the plugin and get it working.
-
 
 1. Upload the plugin folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
@@ -32,7 +33,14 @@ This section describes how to install the plugin and get it working.
 
 = What is this plugin for? =
 
-This plugin is developed so that you don't have to copy-paste the Qeryz code to each of your pages in Wordpress. Simply enter your username and password and activate your Qeryz survey for you to get started with Qeryz.
+This plugin is developed so that you don't have to copy-paste the Qeryz code to each of your pages in Wordpress. Simply enter your email and password and activate your Qeryz survey for you to get started with Qeryz.
+
+= Where can I get my Qeryz account? =
+
+Qeryz is Free. You can get your account by registering to Qeryz.com.
+
+= Can I edit my survey? = 
+Yes, you can edit your survey. Just log in to Qeryz dashboard.
 
 == Screenshots ==
 
@@ -42,10 +50,16 @@ This plugin is developed so that you don't have to copy-paste the Qeryz code to 
 
 == Upgrade Notice ==
 
-= 1.1.3 =
+= 1.2.0 =
 * If survey is not showing after updating the plugin, please click on the plugin dashboard and deactivate your account. Then try to login in or try to deactivate the plugin and then activate.
 
 == Changelog ==
+
+= 1.2.0 =
+* Rename plugin into Qeryz Wordpress Survey
+* Added notification in plugin page if account is not yet login
+* Change Screenshots in Qeryz plugin page
+* Added some new frequently asked question.
 
 = 1.1.3 =
 * Rename user_details.txt file to qeryz_user_details.txt

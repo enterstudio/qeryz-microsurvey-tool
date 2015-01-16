@@ -1,9 +1,9 @@
 <?php
    /*
-   Plugin Name: Qeryz Microsurvey Tool
+   Plugin Name: Qeryz Wordpress Survey
    Plugin URI: https://qeryz.com
    Description: A plugin for Qeryz, a pop-up, as-you-go microsurvey that you can put in any and every webpage you have in your website.
-   Version: 1.1.3
+   Version: 1.2.0
    Author: Qeryz
    Author URI: https://qeryz.com
    License: GPL2
@@ -98,4 +98,23 @@ function qeryz_url_get($filename) {
     $response = wp_remote_get($filename);
     return $response['body'];
 }
+
+// notify user to login
+if ( $pagenow == 'plugins.php') :
+
+    function custom_admin_notice() {
+        $code = get_option('qeryz_code');
+        if($code == 0){
+        echo '<div class="error" style="padding: 0; margin: 0; border: none; background: none;">
+                <div class="qryz_pop_up">
+                    <div class="qryz_message"><p><strong>Dont Forget to Login your Qeryz account!</strong>  
+                        <a class="button qryz_btn" href='.admin_url( 'admin.php?page=qeryz_survey_admin_page' ).'>  LOGIN  </a></p>
+                    </div>
+                </div>
+            </div>';
+        }
+    }
+    add_action( 'admin_notices', 'custom_admin_notice' );
+
+endif;
 ?>
