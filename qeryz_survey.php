@@ -3,7 +3,7 @@
    Plugin Name: Qeryz Wordpress Survey
    Plugin URI: https://qeryz.com
    Description: A plugin for Qeryz, a pop-up, as-you-go microsurvey that you can put in any and every webpage you have in your website.
-   Version: 1.2.0
+   Version: 1.3.0
    Author: Qeryz
    Author URI: https://qeryz.com
    License: GPL2
@@ -13,7 +13,7 @@
 define('QERYZ_SCRIPT_DOMAIN',         "qeryz.com");
 define('QERYZ_BASE_URL',              "https://qeryz.com/");
 define('QERYZ_SIGNUP_REDIRECT_URL',   QERYZ_BASE_URL."subscribe.php");
-define('QERYZ_LOGIN_URL',             QERYZ_BASE_URL."wplogin1.php");
+define('QERYZ_LOGIN_URL',             QERYZ_BASE_URL."wplogin2.php");
 define('QERYZ_SIGNUP_URL',            QERYZ_BASE_URL."subscribe.php");
 define('QERYZ_DASHBOARD_LINK',        "https://qeryz.com/login/dashboard.php");
  
@@ -32,7 +32,7 @@ function load_qeryz_style() {
 add_action('admin_enqueue_scripts', 'load_qeryz_style');
 
 function load_qeryz_js() { 
-    wp_register_script('qeryz_wordpress_js', 'https://qeryz.com/survey/js/qryz_wordpress_v3.js');
+    wp_register_script('qeryz_wordpress_js', 'https://qeryz.com/survey/js/qryz_v3.1.js');
     wp_enqueue_script('qeryz_wordpress_js');
 }
 add_action('wp_enqueue_scripts', 'load_qeryz_js');
@@ -50,19 +50,20 @@ function qeryz_survey() {
 //<!--Start of Qeryz Survey Script-->
     echo ' 
 <!-- Start of code for Qeryz Survey  -->
-    <script type="text/javascript">
+    <script type="text/javascript">                           
     (function() {
+        var qRz = qRz || [];
         setTimeout(function(){
             var qryz_s = document.getElementsByTagName("script")[0];
-            var qryz_plks = document.createElement("div"); 
+            var qryz_plks = document.createElement("div");
             qryz_plks.id = "qryz_plks";
             qryz_plks.className = "qryz_plks";
-            document.body.appendChild(qryz_plks);  
-            qryzInit("https://qeryz.com/survey/qeryz_wordpress_v3.php?qryz_uid='.$code.'&qryz_url="+document.URL);  
+            document.body.appendChild(qryz_plks);
+            qryzInit2('.$code.');
         },0);
     })();
     </script>
-';
+    ';
     }
 
 }
@@ -89,8 +90,9 @@ function qeryz_post_request($url, $_data, $optional_headers = null)
 //        $url = str_replace("https", "http", $url);
     
     $args = array('body' => $_data);
-    $response = wp_remote_post( $url, $args );    
+    $response = (array)wp_remote_post( $url, $args );    
     return $response['body'];
+
 }
 
 

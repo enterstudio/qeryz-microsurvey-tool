@@ -19,19 +19,22 @@ function qeryz_survey_admin_page() {
         update_option('qeryz_code', "0");
     }    
     if (isset($_POST["action"]) && $_POST["action"]=="login") {
-                //Login function goes here......
+        //Login function goes here......
         if ($_POST["qeryz_username"] != "" && $_POST["qeryz_username"] != "")  {
             $logindata = array("username" => $_POST["qeryz_username"], "password" => $_POST["qeryz_password"]);            
             $loginresult = qeryz_post_request(QERYZ_LOGIN_URL, $logindata);
             update_option('qeryz_username', $_POST["qeryz_username"]);
+        //Passing user data into qeryz_user_detials.txt file    
         $qryz_user_details = plugin_dir_path( __FILE__ ).'qeryz_user_details.txt';
         $fh = fopen($qryz_user_details, 'w');
         fwrite($fh, $loginresult);
         fclose($fh);
-        $array = explode("##", file_get_contents($qryz_user_details));
-        $substr = $array[0];
+        //Returns the array at the qeryz_user_details.txt file and split the string
+        $array = explode("##", file_get_contents($qryz_user_details));           
+        $substr = $array[0];        
         $qryz_substr = $array[1];
         $user_id = trim(substr($substr, 8));
+        //Using user_id as qeryz_code
         update_option('qeryz_code',$user_id);
             $len = strlen(trim($loginresult));
             if ($len == 0){
