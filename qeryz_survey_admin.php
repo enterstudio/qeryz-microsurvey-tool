@@ -21,9 +21,10 @@ function qeryz_survey_admin_page() {
     if (isset($_POST["action"]) && $_POST["action"]=="login") {
         //Login function goes here......
         if ($_POST["qeryz_username"] != "" && $_POST["qeryz_username"] != "")  {
-            $logindata = array("username" => $_POST["qeryz_username"], "password" => $_POST["qeryz_password"]);            
+            $logindata = array("qeryz_username" => $_POST["qeryz_username"], "qeryz_password" => $_POST["qeryz_password"]);            
             $loginresult = qeryz_post_request(QERYZ_LOGIN_URL, $logindata);
             update_option('qeryz_username', $_POST["qeryz_username"]);
+            update_option('qeryz_password', $_POST["qeryz_password"]);
         //Passing user data into qeryz_user_detials.txt file    
         $qryz_user_details = plugin_dir_path( __FILE__ ).'qeryz_user_details.txt';
         $fh = fopen($qryz_user_details, 'w');
@@ -58,7 +59,12 @@ function qeryz_survey_admin_page() {
 Current Account &rarr; <b><?php echo get_option('qeryz_username'); ?></b> 
 <!--<div style="display:inline-block;background:#444;color:#fff;font-size:10px;text-transform:uppercase;padding:3px 8px;-moz-border-radius:5px;-webkit-border-radius:5px;"></div>-->
 <br><br>To start using Qeryz Survey, launch our dashboard for access to all features, including survey customization!
-    <br><br><a href="<?php echo QERYZ_DASHBOARD_LINK ?>" style="text-decoration:none;" target="_blank" data-popup="true"><div class="qeryz_btn">Launch Qeryz</div></a>&nbsp;&nbsp;(This will open up a new browser tab.)
+    <br><br>
+ <form action="<?php echo QERYZ_DASHBOARD_LINK ?>" method="post" target="_blank">
+ <input type="hidden" name="qryz_username" value="<?php echo get_option('qeryz_username'); ?>">
+ <input type="hidden" name="qryz_password" value="<?php echo get_option('qeryz_password'); ?>">
+<input type="submit" class="qeryz_btn" value="Launch Qeryz" name="submit" />(This will open up a new browser tab.)
+ </form>   
 </div>
 <?php  }else { ?>
 <!--QERYZ LOGIN FORM HERE-->      

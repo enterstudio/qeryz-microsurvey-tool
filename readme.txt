@@ -3,8 +3,8 @@ Contributors: h3sean
 Donate link: https://qeryz.com/
 Tags: survey tool, qeryz, microsurvey, wordpress survey
 Requires at least: 3.0.1
-Tested up to: 4.1
-Stable tag: 1.3.0
+Tested up to: 4.2.1
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,10 +50,17 @@ Yes, you can edit your survey. Just log in to Qeryz dashboard.
 
 == Upgrade Notice ==
 
-= 1.3.0 =
+= 1.3.1 =
 * If survey is not showing after updating the plugin, please click on the plugin dashboard and deactivate your account. Then try to login in or try to deactivate the plugin and then activate.
 
 == Changelog ==
+
+= 1.3.1 =
+* "Launch Qeryz" button can now access dashboard 
+* Change form login field names
+* Change login url and dashboard url
+* Change launch qeryz link into button type
+* Added form into Launch Qeryz button
 
 = 1.3.0 =
 * Change Qeryz tracking code
