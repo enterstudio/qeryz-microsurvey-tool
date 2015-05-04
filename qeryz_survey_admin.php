@@ -20,7 +20,7 @@ function qeryz_survey_admin_page() {
     }    
     if (isset($_POST["action"]) && $_POST["action"]=="login") {
         //Login function goes here......
-        if ($_POST["qeryz_username"] != "" && $_POST["qeryz_username"] != "")  {
+        if ($_POST["qeryz_username"] != "" && $_POST["qeryz_password"] != "")  {
             $logindata = array("qeryz_username" => $_POST["qeryz_username"], "qeryz_password" => $_POST["qeryz_password"]);            
             $loginresult = qeryz_post_request(QERYZ_LOGIN_URL, $logindata);
             update_option('qeryz_username', $_POST["qeryz_username"]);
@@ -39,7 +39,7 @@ function qeryz_survey_admin_page() {
         update_option('qeryz_code',$user_id);
             $len = strlen(trim($loginresult));
             if ($len == 0){
-                    $error["login"] = "<p class='error_message'>Could not log in to Qeryz. Please check your login details.</p>";            
+                    $error["login"] = "<p class='error_message'>Username or Password is Incorrect. Please check your login details.</p>";            
             }
             else {
                 
