@@ -21,29 +21,23 @@ function qeryz_survey_admin_page() {
     if (isset($_POST["action"]) && $_POST["action"]=="login") {
         //Login function goes here......
         if ($_POST["qeryz_username"] != "" && $_POST["qeryz_password"] != "")  {
-            $logindata = array("qeryz_username" => $_POST["qeryz_username"], "qeryz_password" => $_POST["qeryz_password"]);            
-            $loginresult = qeryz_post_request(QERYZ_LOGIN_URL, $logindata);
+            $qeryz_logindata = array("qeryz_username" => $_POST["qeryz_username"], "qeryz_password" => $_POST["qeryz_password"]);            
+            $qeryz_loginresult = qeryz_post_request(QERYZ_LOGIN_URL, $qeryz_logindata);
             update_option('qeryz_username', $_POST["qeryz_username"]);
             update_option('qeryz_password', $_POST["qeryz_password"]);
-        //Passing user data into qeryz_user_detials.txt file    
-        $qryz_user_details = plugin_dir_path( __FILE__ ).'qeryz_user_details.txt';
-        $fh = fopen($qryz_user_details, 'w');
-        fwrite($fh, $loginresult);
-        fclose($fh);
-        //Returns the array at the qeryz_user_details.txt file and split the string
-        $array = explode("##", file_get_contents($qryz_user_details));           
-        $substr = $array[0];        
-        $qryz_substr = $array[1];
-        $user_id = trim(substr($substr, 8));
+            $qeryz_array = explode("##", $qeryz_loginresult);
+            $substr = $qeryz_array[0];
+            $substr_group = $qeryz_array[4];
+            $qeryz_user_id = trim(substr($substr, 8));
+            $qeryz_group = trim(substr($substr_group, 11));
+        
         //Using user_id as qeryz_code
-        update_option('qeryz_code',$user_id);
-            $len = strlen(trim($loginresult));
-            if ($len == 0){
+        update_option('qeryz_code',$qeryz_user_id);
+        update_option('qeryz_group',$qeryz_group);
+            $qeryz_len = strlen(trim($qeryz_loginresult));
+            if ($qeryz_len == 0){
                     $error["login"] = "<p class='error_message'>Username or Password is Incorrect. Please check your login details.</p>";            
             }
-            else {
-                
-            } 
             
         }
         else {
@@ -51,13 +45,13 @@ function qeryz_survey_admin_page() {
         } 
         
     }
-    if(get_option('qeryz_code') > '0'){
+    if(get_option('qeryz_code') > "0"){
         
 ?>
-<div id="" style="background:#ECE2CB;padding:25px;border:1px solid #eee;">
+<div id="qeryz_title" style="background: rgb(221, 221, 221);"><img src="<?php echo plugin_dir_url( __FILE__ ).'/images/qeryzlogo.png' ?>" alt="" width="10%"></div>
+<div id="qeryz_dashboard_plugin" style="background:#ECE2CB;padding:25px;border:1px solid #eee;">
 <span style="float:right;"><a href="admin.php?page=qeryz_survey_admin_page&action=deactivate">Deactivate</a></span>
-Current Account &rarr; <b><?php echo get_option('qeryz_username'); ?></b> 
-<!--<div style="display:inline-block;background:#444;color:#fff;font-size:10px;text-transform:uppercase;padding:3px 8px;-moz-border-radius:5px;-webkit-border-radius:5px;"></div>-->
+Current Account &rarr; <b><?php echo get_option('qeryz_username'); ?></b><div style="display:inline-block;margin-left:5px;background:#F09A28;color:#fff;font-size:10px;text-transform:uppercase;padding:3px 8px;-moz-border-radius:5px;-webkit-border-radius:5px;"><?php echo get_option('qeryz_group'); ?></div> 
 <br><br>To start using Qeryz Survey, launch our dashboard for access to all features, including survey customization!
     <br><br>
  <form action="<?php echo QERYZ_DASHBOARD_LINK ?>" method="post" target="_blank">
