@@ -3,8 +3,8 @@ Contributors: h3sean
 Donate link: https://qeryz.com/
 Tags: survey tool, qeryz, microsurvey, wordpress survey
 Requires at least: 3.0.1
-Tested up to: 4.2.1
-Stable tag: 1.3.3
+Tested up to: 4.2.2
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,7 +37,7 @@ This plugin is developed so that you don't have to copy-paste the Qeryz code to 
 
 = Where can I get my Qeryz account? =
 
-Qeryz is Free. You can get your account by registering to Qeryz.com.
+Qeryz is Free. You can get your account by registering to www.qeryz.com.
 
 = Can I edit my survey? = 
 Yes, you can edit your survey. Just log in to Qeryz dashboard.
@@ -50,10 +50,16 @@ Yes, you can edit your survey. Just log in to Qeryz dashboard.
 
 == Upgrade Notice ==
 
-= 1.3.3 =
+= 1.4.0 =
 * If survey is not showing after updating the plugin, please click on the plugin dashboard and deactivate your account. Then try to login in or try to deactivate the plugin and then activate.
 
 == Changelog ==
+
+= 1.4.0 =
+* Updated Qeryz Tracking Code
+* Removed uneccessary var qryz_s on qeryz code
+* Make var qRz global by putting it before the function
+* Added Wordpress Plugin in the comment bar
 
 = 1.3.3 =
 * Added is_wp_error to check if request is failure  
