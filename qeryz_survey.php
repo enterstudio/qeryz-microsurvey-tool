@@ -3,7 +3,7 @@
    Plugin Name: Qeryz Wordpress Survey
    Plugin URI: https://qeryz.com
    Description: A plugin for Qeryz, a pop-up, as-you-go microsurvey that you can put in any and every webpage you have in your website.
-   Version: 1.4.0
+   Version: 1.5.0
    Author: Qeryz
    Author URI: https://qeryz.com
    License: GPL2
@@ -32,7 +32,7 @@ function load_qeryz_style() {
 add_action('admin_enqueue_scripts', 'load_qeryz_style');
 
 function load_qeryz_js() { 
-    wp_register_script('qeryz_wordpress_js', 'https://qeryz.com/survey/js/qryz_v3.1.js');
+    wp_register_script('qeryz_wordpress_js', 'https://qeryz.com/survey/js/qryz_v3.2.js');
     wp_enqueue_script('qeryz_wordpress_js');
 }
 add_action('wp_enqueue_scripts', 'load_qeryz_js');
